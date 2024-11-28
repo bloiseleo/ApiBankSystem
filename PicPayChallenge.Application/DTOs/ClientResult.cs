@@ -14,6 +14,7 @@ namespace PicPayChallenge.Application.DTOs
         public string Name { get; set; }
         public string Cpf { get ; set ; }
         public string Email { get ; set ; }
+        public decimal Value { get; set; }
 
         public static ClientResult FromDomain(Client client)
         {
@@ -22,7 +23,18 @@ namespace PicPayChallenge.Application.DTOs
                 Id = client.Id,
                 Cpf = client.Cpf,
                 Name = client.Name,
-                Email = client.Email,
+                Email = client.Email,       
+            };
+        }
+        public static ClientResult FromWallet(Wallet wallet)
+        {
+            return new ClientResult
+            {
+                Cpf = wallet.User.Document,
+                Email = wallet.User.Email,
+                Id = wallet.User.Id,
+                Name = wallet.User.Name,
+                Value = wallet.Amount,
             };
         }
     }

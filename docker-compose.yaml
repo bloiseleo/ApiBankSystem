@@ -1,9 +1,16 @@
 services:
     database:
         image: postgres
-        ports:
-            - 5432:5432
         environment:
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root
             POSTGRES_DB: picpay
+        volumes:
+            - "./PicPayChallenge.Infra/Migrations/scripts:/docker-entrypoint-initdb.d"
+    api:
+        image: bloiseleo/picpayapi:latest
+        depends_on:
+            - database 
+        ports:
+            - "8080:8080"
+            

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PicPayChallenge.Infra.UseCases
 {
-    public class GetClientUseCase(IClientRepository clientRepository): IGetClientUseCase
+    public class GetClientUseCase(IWalletRepository walletRepository): IGetClientUseCase
     {
         public IClientResult GetClient(IGetClientDTO getClientDTO)
         {
@@ -19,12 +19,12 @@ namespace PicPayChallenge.Infra.UseCases
             {
                 throw new InvalidClientId(getClientDTO.Id);
             }
-            var client = clientRepository.FindById(clientId);
+            var client = walletRepository.FindByUserId(clientId);
             if (client == null) 
             {
                 throw new ClientNotFound(getClientDTO.Id);
             }
-            return ClientResult.FromDomain(client);
+            return ClientResult.FromWallet(client);
         }
     }
 }

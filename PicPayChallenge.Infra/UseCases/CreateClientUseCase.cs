@@ -23,7 +23,7 @@ namespace PicPayChallenge.Infra.UseCases
                 client.Password = passwordHasher.Hash(client.Password, client);
                 var wallet = walletRepository.Create(new Wallet()
                 {
-                    Amount = 0.0m,
+                    Amount = 100,
                     User = client,
                 });
                 client.Id = wallet.User.Id;

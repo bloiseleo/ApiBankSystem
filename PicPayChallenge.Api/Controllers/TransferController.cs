@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PicPayChallenge.Api.DTOs;
 using PicPayChallenge.Domain.UseCases;
@@ -8,6 +8,7 @@ namespace PicPayChallenge.Api.Controllers
     public class TransferController(ITransferUseCase transferUseCase): ApiController
     {
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Transfer([FromBody] TransferDTO transferDTO)
         {
             var success = await transferUseCase.Transfer(transferDTO);

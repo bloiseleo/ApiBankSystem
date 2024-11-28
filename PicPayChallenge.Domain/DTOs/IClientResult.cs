@@ -12,5 +12,6 @@ namespace PicPayChallenge.Domain.DTOs
         public string Name { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
+        public Decimal Value { get; set; } 
     }
 }
