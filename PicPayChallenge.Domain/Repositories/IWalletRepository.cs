@@ -12,5 +12,7 @@ namespace PicPayChallenge.Domain.Repositories
         public Wallet Create(Wallet wallet);
         public Wallet? FindByUserId(int userId);
         public IEnumerable<Wallet> UpdateWallets(IEnumerable<Wallet> wallets);
+        public Wallet? FindClientWallet(int userId);
+        public Wallet? FindBusinessOwnerWallet(int userId); 
     }
 }

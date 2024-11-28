@@ -19,12 +19,12 @@ namespace PicPayChallenge.Infra.UseCases
             {
                 throw new InvalidClientId(getClientDTO.Id);
             }
-            var client = walletRepository.FindByUserId(clientId);
-            if (client == null) 
+            var wallet = walletRepository.FindClientWallet(clientId);
+            if (wallet == null) 
             {
                 throw new ClientNotFound(getClientDTO.Id);
             }
-            return ClientResult.FromWallet(client);
+            return ClientResult.FromWallet(wallet);
         }
     }
 }

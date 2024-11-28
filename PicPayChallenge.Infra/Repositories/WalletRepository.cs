@@ -20,6 +20,13 @@ namespace PicPayChallenge.Infra.Repositories
             return entity.ToDomain();
         }
 
+        public Wallet? FindBusinessOwnerWallet(int userId)
+        {
+            var entity = context.Wallets.Include(w => w.User).Where(w => w.User.Kind == UserKind.BUSINESS_OWNER).Where(w => w.User.Id == userId).FirstOrDefault();
+            if (entity == null) return null;
+            return entity.ToDomain();
+        }
+
         public Wallet? FindByUserId(int userId)
         {
             var entity = context.Wallets.Include(w => w.User).Where(w => w.User.Id == userId).FirstOrDefault();
@@ -27,6 +34,13 @@ namespace PicPayChallenge.Infra.Repositories
             {
                 return null;
             }
+            return entity.ToDomain();
+        }
+
+        public Wallet? FindClientWallet(int userId)
+        {
+            var entity = context.Wallets.Include(w => w.User).Where(w => w.User.Kind == UserKind.CLIENT).Where(w => w.User.Id == userId).FirstOrDefault();
+            if (entity == null) return null;
             return entity.ToDomain();
         }
 
