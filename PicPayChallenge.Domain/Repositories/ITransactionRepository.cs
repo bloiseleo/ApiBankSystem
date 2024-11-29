@@ -10,5 +10,6 @@ namespace PicPayChallenge.Domain.Repositories
     public interface ITransactionRepository
     {
         public Transaction Create(Transaction transaction);
+        public (IEnumerable<Transaction>, int) CreateTransactionPage(int pageSize, int pageIndex, int userId);
     }
 }

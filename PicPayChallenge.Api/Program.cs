@@ -64,6 +64,7 @@ namespace PicPayChallenge.Api
             builder.Services.AddScoped<IGetBusinessOwnerUseCase, GetBusinessOwnerUseCase>();
             builder.Services.AddSingleton<IAuthorizeService, AuthorizeService>();
             builder.Services.AddSingleton<IEmailNotifierService, EmailNotifierService>();
+            builder.Services.AddScoped<IGetPaginatedTransactions, GetPaginatedTransactions>();
 
             builder.AddExceptionHandlers();
 
