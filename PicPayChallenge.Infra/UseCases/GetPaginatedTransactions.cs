@@ -20,8 +20,8 @@ namespace PicPayChallenge.Infra.UseCases
                 {
                     Amount = t.Amount,
                     Id = t.Id.ToString(),
-                    PayeeId = t.From.Id.ToString(),
-                    PayerId = t.To.Id.ToString(),
+                    PayeeId = t.To.Id.ToString(),
+                    PayerId = t.From.Id.ToString(),
                     Status = t.Status,
                 }),
                 PageIndex = request.PageIndex,
